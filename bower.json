@@ -1,0 +1,36 @@
+{
+  "name": "querytoobj",
+  "version": "1.0.0",
+  "homepage": "https://github.com/kristoferk/queryToObj",
+  "authors": [
+    { "name": "kristoferk" }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/kristoferk/queryToObj.git"
+  },
+  "description": "Converts a url query string to a javascript object",
+  "main": "dist/queryToObj.js",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "javascript"
+  ],
+  "dependencies": {
+  },
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "spec",
+    "src",
+    "Gruntfile.js",
+    ".travis.yml",
+    ".npmignore",
+    "package.json"
+  ]
+}
+
+
