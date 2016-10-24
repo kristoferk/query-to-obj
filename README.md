@@ -8,7 +8,7 @@ Converts a javascript object to a url query string
 
 ## Installation
 ```shell
-npm install querytoobj --save
+npm install queryToObj --save
 ```
 
 ## Usage
