@@ -24,18 +24,20 @@
         str = str || document.location.search;
 
         var applyCaseOnKey = function(key) {
-            if (options.case == 'camelCase') {
-                key = toCamelCase(key);
-            }
+            if (options.keyCase)
+            {
+                if (options.keyCase.toLowerCase() === 'camelcase') {
+                    key = toCamelCase(key);
+                }
 
-            if (options.case == 'PascalCase') {
-                key = toPascalCase(key);
-            }
+                if (options.keyCase.toLowerCase() == 'pascalcase') {
+                    key = toPascalCase(key);
+                }
 
-            if (options.case == 'snake_case') {
-                key = toSnakeCase(key);
+                if (options.keyCase.toLowerCase() == 'snake_case' || options.keyCase.toLowerCase() == 'snakecase') {
+                    key = toSnakeCase(key);
+                }
             }
-
 
             return key;
         }
@@ -92,6 +94,17 @@
             }
 
             key = applyCaseOnKey(key);
+
+            if ( options.valueCase) {
+                if ( options.valueCase.toLowerCase() === 'lowercase') {                
+                    val = val.toLowerCase();
+                }
+
+                if ( options.valueCase.toUpperCase() === 'UPPERCASE') {                
+                    val = val.toUpperCase();
+                }
+            }
+            
 
             if (!options.skipCast) {
                 // simple float regex

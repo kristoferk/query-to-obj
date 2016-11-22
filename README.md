@@ -33,7 +33,8 @@ const obj = queryToObj("Id=3&Name=Example&List=a&List=b&Sub.Prop=S");
 import queryToObj from 'query-to-obj';
 const obj = queryToObj("Id=3&Name=Example&EmptyKey=Example", {
     skipEmptyValues: false,    //If empty string values should be included in object, Default: false 
-    case: 'camelCase',         //Convert keys to camelCase, also support for 'PascalCase' and 'snake_case'. Default: 'None'
+    keyCase: 'camelCase',      //Convert keys to camelCase, also support for 'PascalCase', 'snake_case' and 'None'. Default: 'None'
+    valueCase: 'lowercase',    //Convert values to lowercase, also support for 'UPPERCASE' and 'None'. Default: 'None'
     skipCast: true,            //If values should be casted to other types then strings, Default: false
     decode: true               //If values should be url decoded, Default: false   
 }); 
@@ -41,7 +42,7 @@ const obj = queryToObj("Id=3&Name=Example&EmptyKey=Example", {
 //Result: 
 // { 
 //     id: '3', 
-//     name: 'Example'
+//     name: 'example'
 // }
 
 ```

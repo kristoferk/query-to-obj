@@ -1,6 +1,7 @@
 describe("queryToObj", function () {
     beforeEach(function() {
         this.inputSimple = "Id=1&Name=Test&Name=Test2&Name=Test3&Sub.Test.Inner=2&Sub.Test.InnerB=3";
+        this.inputValueCase = "Id=1&Name=TestTest&List=TestTest&List=TestTest&Sub.Test.InnerB=Test";
         this.inputDecode = "Id=1&Encoded=%C3%A5";
         this.inputCast = "Id=1&Money=3.5&Money2=3,5&Number=4&Setting=true&Setting2=False";
         this.inputSkip = "Id=1&Skip=";
@@ -18,6 +19,38 @@ describe("queryToObj", function () {
                 Test: {
                     Inner:2,
                     InnerB:3
+                }
+            }
+        };
+
+        chai.expect(JSON.stringify(obj)).to.equal(JSON.stringify(value));
+    });
+
+    it("lowercase", function() {
+        var value = queryToObj(this.inputValueCase, { valueCase: 'LowerCase'});
+        var obj = {
+            Id: 1,
+            Name: 'testtest',
+            List: ['testtest', 'testtest'],            
+            Sub: {
+                Test: {
+                    InnerB:'test'
+                }
+            }
+        };
+
+        chai.expect(JSON.stringify(obj)).to.equal(JSON.stringify(value));
+    });
+
+    it("UPPERCASE", function() {
+        var value = queryToObj(this.inputValueCase, { valueCase: 'UpperCase'});
+        var obj = {
+            Id: 1,
+            Name: 'TESTTEST',
+            List: ['TESTTEST', 'TESTTEST'],            
+            Sub: {
+                Test: {
+                    InnerB:'TEST'
                 }
             }
         };
@@ -59,7 +92,7 @@ describe("queryToObj", function () {
     });
 
     it("camelCase", function() {
-        var value = queryToObj(this.inputCamelCase, {skipEmptyValues: true, case: 'camelCase'});
+        var value = queryToObj(this.inputCamelCase, {skipEmptyValues: true, keyCase: 'camelCase'});
         var obj = {
             testId: [ 1, 2 ],
             camelCaseCamelCase: true,
@@ -73,7 +106,7 @@ describe("queryToObj", function () {
     });
 
     it("PascalCase", function() {
-        var value = queryToObj(this.inputPascalCase, { skipEmptyValues: true, case: 'PascalCase' });
+        var value = queryToObj(this.inputPascalCase, { skipEmptyValues: true, keyCase: 'PascalCase' });
         var obj = {
             TestObjId: [ 1, 2, 3 ],
             CamelCaseCamelCase: true,
@@ -87,7 +120,7 @@ describe("queryToObj", function () {
     });
 
     it("Snake_Case", function() {
-        var value = queryToObj(this.inputSnakeCase, {skipEmptyValues: true, case: 'snake_case'});
+        var value = queryToObj(this.inputSnakeCase, {skipEmptyValues: true, keyCase: 'snake_case'});
         var obj = {
             test_obj_id: [ 1, 2, 3 ],
             camel_case_camel_case: true,
