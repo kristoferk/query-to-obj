@@ -29,7 +29,8 @@
     "Gruntfile.js",
     ".travis.yml",
     ".npmignore",
-    "package.json"
+    "package.json",
+    "deploy.txt"
   ]
 }
 

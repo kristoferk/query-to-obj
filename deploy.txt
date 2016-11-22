@@ -1,4 +1,5 @@
-> Set version number in bwoer.json and package.json
+> Set version number in bower.json and package.json
 > grunt default
+> npm test
 > npm publish
 > Sign in to github and create release
