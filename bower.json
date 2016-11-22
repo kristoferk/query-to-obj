@@ -1,16 +1,16 @@
 {
-  "name": "querytoobj",
+  "name": "query-to-obj",
   "version": "1.0.0",
-  "homepage": "https://github.com/kristoferk/queryToObj",
+  "homepage": "https://github.com/kristoferk/query-to-obj",
   "authors": [
     { "name": "kristoferk" }
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/kristoferk/queryToObj.git"
+    "url": "git://github.com/kristoferk/query-to-obj.git"
   },
   "description": "Converts a url query string to a javascript object",
-  "main": "dist/queryToObj.js",
+  "main": "dist/query-to-obj.js",
   "moduleType": [
     "globals"
   ],

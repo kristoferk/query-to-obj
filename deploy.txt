@@ -2,23 +2,3 @@
 > grunt default
 > npm publish
 > Sign in to github and create release
-
-
-
-
-    it("default", function() {
-        var value = queryToObj(this.input);
-        var obj = {
-            Id: '1',
-            ListProperty: ['Name1', 'Name2'],
-            NullTest: '',
-            IntTest: '0',
-            BlnTest: 'true',
-            SubObject: {
-                Client: 'Sub'
-            },
-            Encoded: 'å'
-        };
-
-        chai.expect(JSON.stringify(obj) ).to.equal(JSON.stringify(value));
-    });

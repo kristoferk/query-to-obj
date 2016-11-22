@@ -1,5 +1,5 @@
 {
-  "name": "querytoobj",
+  "name": "query-to-obj",
   "description": "Converts a query string to a javascript object",
   "version": "1.0.0",
   "author": "kristoferk",
@@ -15,12 +15,12 @@
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/kristoferk/queryToObj/blob/master/LICENSE.txt"
+      "url": "https://github.com/kristoferk/query-to-obj/blob/master/LICENSE.txt"
     }
   ],
   "repository": {
     "type": "git",
-    "url": "http://github.com/kristoferk/queryToObj"
+    "url": "http://github.com/kristoferk/query-to-obj"
   },
 
   "dependencies": {
@@ -29,5 +29,5 @@
   "scripts": {
     "test": "grunt mocha"
   },
-  "main": "dist/queryToObj.js"
+  "main": "dist/query-to-obj.js"
 }
