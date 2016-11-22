@@ -1,6 +1,6 @@
 // query-to-obj
 // ------------
-// v1.0.0
+// v1.0.1
 //
 // Copyright (c) 2012-2016 Kristofer Karlsson
 // Distributed under MIT license
@@ -104,7 +104,6 @@
                     val = val.toUpperCase();
                 }
             }
-            
 
             if (!options.skipCast) {
                 // simple float regex
