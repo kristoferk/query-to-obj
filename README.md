@@ -31,7 +31,7 @@ const obj = queryToObj("Id=3&Name=Example&List=a&List=b&Sub.Prop=S");
 ## Optional settings
 ```js
 import queryToObj from 'query-to-obj';
-const obj = queryToObj("Id=3&Name=Example&EmptyKey=Example", {
+const obj = queryToObj("Id=3&Name=Example&EmptyKey=", {
     skipEmptyValues: false,    //If empty string values should be included in object, Default: false 
     keyCase: 'camelCase',      //Convert keys to camelCase, also support for 'PascalCase', 'snake_case' and 'None'. Default: 'None'
     valueCase: 'lowercase',    //Convert values to lowercase, also support for 'UPPERCASE' and 'None'. Default: 'None'
