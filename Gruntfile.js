@@ -8,7 +8,7 @@ module.exports = function(grunt) {
         '// ------------\n' +
         '// v<%= pkg.version %>\n' +
         '//\n' +
-        '// Copyright (c) 2016-<%= grunt.template.today("yyyy") %> Kristofer Karlsson\n' +
+        '// Copyright (c) 2012-<%= grunt.template.today("yyyy") %> Kristofer Karlsson\n' +
         '// Distributed under MIT license\n' +
         '//\n' +
         '// <%= pkg.repository.url %>\n' +
