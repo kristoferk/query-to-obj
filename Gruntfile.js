@@ -35,7 +35,8 @@ module.exports = function(grunt) {
     mocha: {
       test: {
         options: {
-          run: true
+            run: true,
+            growlOnSuccess: false
         },
         src: ['spec/**/*.html']
       }
