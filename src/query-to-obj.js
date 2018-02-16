@@ -21,11 +21,11 @@
                     key = toCamelCase(key);
                 }
 
-                if (options.keyCase.toLowerCase() == 'pascalcase') {
+                if (options.keyCase.toLowerCase() === 'pascalcase') {
                     key = toPascalCase(key);
                 }
 
-                if (options.keyCase.toLowerCase() == 'snake_case' || options.keyCase.toLowerCase() == 'snakecase') {
+                if (options.keyCase.toLowerCase() === 'snake_case' || options.keyCase.toLowerCase() === 'snakecase') {
                     key = toSnakeCase(key);
                 }
             }
