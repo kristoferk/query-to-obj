@@ -1,7 +1,7 @@
 {
   "name": "query-to-obj",
   "description": "Converts a query string to a javascript object",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "kristoferk",
   "keywords": [
     "javascript"

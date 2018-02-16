@@ -82,7 +82,7 @@
         var pushValueOnObject = function (obj, key, val) {
             if ( options.decode) {                
                 val = decodeURIComponent(val);
-            }
+            }            
 
             key = applyCaseOnKey(key);
 
@@ -151,6 +151,10 @@
                 pushValueOnObject(t, s[s.length-1], val);
             }
             else {    
+                if (options.decode) {
+                    key = decodeURIComponent(key);
+                }
+
                 //Handle key value and arrays
                 pushValueOnObject(obj, key, val);
             }

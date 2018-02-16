@@ -1,4 +1,4 @@
-describe("queryToObj", function () {
+﻿describe("queryToObj", function () {
     beforeEach(function() {
         this.inputSimple = "Id=1&Name=Test&Name=Test2&Name=Test3&Sub.Test.Inner=2&Sub.Test.InnerB=3";
         this.inputValueCase = "Id=1&Name=TestTest&List=TestTest&List=TestTest&Sub.Test.InnerB=Test";
@@ -8,6 +8,8 @@ describe("queryToObj", function () {
         this.inputCamelCase = "TestId=1&Test_Id=2&CamelCase_camel_case=true&NestedObj.SubValue=2&NestedObj.Snake_Value=4";
         this.inputSnakeCase = "TestObjId=1&test_Obj_Id=2&TestObjId=3&camelCase_CamelCase=true&NestedObj.SubValue=2&nestedObj.snakeValue=4";
         this.inputPascalCase = "testObjId=1&test_obj_Id=2&TestObjId=3&camelCase_camel_case=true&NestedObj.SubValue=2&nestedObj.snake_Value=4";
+        this.inputDecodeKey = "bl%40h=blah";
+        this.inputDecodeKeyNested = "test.bl%2540h=blah";
     });
 
     it("default", function() {
@@ -68,6 +70,22 @@ describe("queryToObj", function () {
         chai.expect(JSON.stringify(obj)).to.equal(JSON.stringify(value));
     });
 
+    it("decodeKey", function () {
+        var value = queryToObj(this.inputDecodeKey, { decode: true, skipCast: true });
+        
+        for (var v in value) {
+            chai.expect("bl@h").to.equal(v);
+        }
+    });
+
+    it("decodeKeyNested", function () {
+        var value = queryToObj(this.inputDecodeKeyNested, { decode: true, skipCast: true });
+
+        for (var v in value.test) {
+            chai.expect("bl%40h").to.equal(v);
+        }
+    });
+    
     it("cast", function() {
         var value = queryToObj(this.inputCast);
         var obj = {
@@ -134,4 +152,19 @@ describe("queryToObj", function () {
         chai.expect(JSON.stringify(obj)).to.equal(JSON.stringify(value));
     });
 
+    it("decodeKey", function () {
+        var value = queryToObj(this.inputDecodeKey, { decode: true, skipCast: true });
+        
+        for (var v in value) {
+            chai.expect("bl@h").to.equal(v);
+        }
+    });
+
+    it("decodeKeyNested", function () {
+        var value = queryToObj(this.inputDecodeKeyNested, { decode: true, skipCast: true });
+
+        for (var v in value.test) {
+            chai.expect("bl%40h").to.equal(v);
+        }
+    });
 });

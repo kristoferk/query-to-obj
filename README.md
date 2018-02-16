@@ -58,3 +58,5 @@ npm test
 ## Release History
 
 * 1.0.0 Initial release
+* 1.0.1 Add some optional settings for manipulating case on keys and values
+* 1.0.2 Fixed issue with decoding keys [#1](https://github.com/kristoferk/query-to-obj/issues/1)  (Thanks to Eli Doran for reporting issue)
