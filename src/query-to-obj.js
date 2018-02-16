@@ -13,10 +13,31 @@
     function queryToObj(str, options){
         options = options || {};
         str = str || document.location.search;
+        
+        var applyCaseOnKey = function (key) {
+            var toCamelCase = function (str) {
+                return str
+                    //SnakeCase to PamelCase
+                    .replace(/(\_\w)/g, function (m) { return m[1].toUpperCase(); })
+                    //First letter lower
+                    .replace(/^(.)/, function ($1) { return $1.toLowerCase(); });
+            }
 
-        var applyCaseOnKey = function(key) {
-            if (options.keyCase)
-            {
+            var toPascalCase = function (str) {
+                return str
+                    //SnakeCase to PamelCase
+                    .replace(/(\_\w)/g, function (m) { return m[1].toUpperCase(); })
+                    //First letter upper case
+                    .replace(/^(.)/, function ($1) { return $1.toUpperCase(); });
+            }
+
+            var toSnakeCase = function (str) {
+                return str
+                    //camelCase to SnakeCase
+                    .replace(/([a-z][A-Z])/g, function (m) { return m[0] + '_' + m[1] }).toLowerCase();
+            }
+
+            if (options.keyCase) {
                 if (options.keyCase.toLowerCase() === 'camelcase') {
                     key = toCamelCase(key);
                 }
@@ -32,21 +53,21 @@
 
             return key;
         }
-
+        
         var ensureKeys = function (arr, obj) {
             var lastObj = obj;
 
-            for(var parts = arr, i=0, l=parts.length-1, cache=obj; i<l; i++) {
+            for (var parts = arr, i = 0, l = parts.length - 1, cache = obj; i < l; i++) {
 
                 var key = parts[i];
 
-                if ( options.decode) {
+                if (options.decode) {
                     key = decodeURIComponent(key);
                 }
-                
+
                 key = applyCaseOnKey(key);
 
-                if(!cache[key]) {
+                if (!cache[key]) {
                     cache[key] = {};
                 }
                 cache = cache[key];
@@ -55,28 +76,6 @@
             }
 
             return lastObj;
-        }
-
-        toCamelCase = function(str) {
-            return str
-                //SnakeCase to PamelCase
-                .replace(/(\_\w)/g, function(m){return m[1].toUpperCase();})
-                //First letter lower
-                .replace(/^(.)/, function($1) { return $1.toLowerCase(); });
-        }
-
-        toPascalCase = function(str) {
-            return str
-                //SnakeCase to PamelCase
-                .replace(/(\_\w)/g, function(m){return m[1].toUpperCase();})
-                //First letter upper case
-                .replace(/^(.)/, function($1) { return $1.toUpperCase(); });
-        }
-
-        toSnakeCase = function(str) {
-            return str
-                //camelCase to SnakeCase
-                .replace(/([a-z][A-Z])/g, function(m){ return m[0] + '_' + m[1] }).toLowerCase();
         }
 
         var pushValueOnObject = function (obj, key, val) {
@@ -142,7 +141,7 @@
                 //Handle nested object
                 var s = key.split(".");
                 if ( options.decode) {
-                    for (i = 0; i < s.length; i++) { 
+                    for (var i = 0; i < s.length; i++) { 
                         s[i] = decodeURIComponent(s[i]);
                     }
                 }
