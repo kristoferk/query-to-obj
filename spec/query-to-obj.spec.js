@@ -153,18 +153,12 @@
     });
 
     it("decodeKey", function () {
-        var value = queryToObj(this.inputDecodeKey, { decode: true, skipCast: true });
-        
-        for (var v in value) {
-            chai.expect("bl@h").to.equal(v);
-        }
+        var value = queryToObj(this.inputDecodeKey, { decode: true, skipCast: true });        
+        chai.expect(value['bl@h']).to.equal('blah');
     });
 
     it("decodeKeyNested", function () {
         var value = queryToObj(this.inputDecodeKeyNested, { decode: true, skipCast: true });
-
-        for (var v in value.test) {
-            chai.expect("bl%40h").to.equal(v);
-        }
+        chai.expect(value.test['bl%40h']).to.equal('blah');
     });
 });
